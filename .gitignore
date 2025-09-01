@@ -1,0 +1,71 @@
+# Compiled applications and executables
+app/
+*.exe
+*.app
+*.dmg
+*.deb
+*.rpm
+
+# Dataset and data files
+dataset/
+data/
+*.csv
+*.xlsx
+*.json
+*.db
+*.sqlite
+
+
+
+
+
+# Interface files
+interface_graphique.PNG
+*.ui
+
+# Build directories
+build/
+dist/
+*.egg-info/
+
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.env.example
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+
+# Configuration files with sensitive data
+config.json
+.env
+
+# Temporary files
+*.tmp
+*.temp
