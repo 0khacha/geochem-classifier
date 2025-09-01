@@ -1,74 +1,70 @@
-
 # Geochem Classifier 🧪⛏️
 
-Un système de classification géochimique basé sur l'apprentissage automatique pour analyser et prédire les types d'échantillons miniers.
+A **machine learning–powered geochemical classification tool** designed to analyze and predict the type of mining samples.
 
-## 📋 Description
+## 📋 Overview
 
-Ce projet utilise des algorithmes de machine learning pour classifier automatiquement les échantillons géochimiques en trois catégories :
-- **Stérile** : Échantillons sans valeur économique
-- **Potentiel** : Échantillons avec potentiel minier modéré
-- **Minerai** : Échantillons de haute valeur économique
+This project leverages machine learning algorithms to automatically classify geochemical samples into three categories:
+- **Sterile** – No economic interest
+- **Potential** – Moderate mining potential
+- **Ore** – High economic value
 
-Le système analyse 36 caractéristiques géochimiques différentes pour effectuer ses prédictions.
+The system bases its predictions on **36 geochemical features**.
 
-## 🚀 Fonctionnalités
+## 🚀 Key Features
 
-- **Classification automatique** d'échantillons géochimiques
-- **Analyse de seuils** pour optimiser les critères de classification
-- **Préprocessing intelligent** des données brutes avec gestion des valeurs manquantes
-- **Analyse comparative** entre différents algorithmes (SVM, Random Forest, etc.)
-- **Prédictions en temps réel** sur de nouveaux échantillons
-- **Rapports détaillés** avec métriques de performance
+- **Automatic classification** of geochemical samples  
+- **Threshold analysis** to refine classification criteria  
+- **Smart preprocessing** with handling of missing or censored values  
+- **Algorithm benchmarking** (SVM, Random Forest, etc.)  
+- **Real-time predictions** on new samples  
+- **Detailed reports** with performance metrics  
 
-## 📁 Structure du projet
+## 📁 Project Structure
 
 ```
 src/
-├── train.py                    # Entraînement des modèles
-├── infer.py                    # Prédiction sur nouveaux échantillons
-├── preprocess.py               # Préprocessing des données
-├── analyze_ag.py               # Analyse spécifique à l'argent
-├── analyze_thresholds.py       # Analyse des seuils de classification
-├── geochemical_analysis.py     # Analyses géochimiques générales
-├── potential_analysis.py       # Analyse des échantillons potentiels
-└── silver_analysis.py          # Analyse spécialisée argent
+├── train.py                  # Model training
+├── infer.py                  # Predictions on new samples
+├── preprocess.py             # Data preprocessing
+├── analyze_ag.py             # Silver-focused analysis
+├── analyze_thresholds.py     # Threshold optimization
+├── geochemical_analysis.py   # General geochemical analyses
+├── potential_analysis.py     # Analysis of potential samples
+└── silver_analysis.py        # Silver-specific analysis
 ```
 
 ## 🛠️ Installation
 
-### Prérequis
-- Python 3.8+
+### Requirements
+- Python 3.8+  
 - pip
 
-### Installation des dépendances
+### Install dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-### Dépendances principales
-- `scikit-learn` : Algorithmes de machine learning
-- `pandas` : Manipulation des données
-- `numpy` : Calculs numériques
-- `joblib` : Sérialisation des modèles
-- `matplotlib` : Visualisations
+### Core dependencies
+- `scikit-learn` – Machine learning algorithms  
+- `pandas` – Data handling  
+- `numpy` – Numerical computations  
+- `joblib` – Model serialization  
+- `matplotlib` – Data visualization  
 
-## 💻 Utilisation
+## 💻 Usage
 
-### 1. Entraînement d'un modèle
-
+### 1. Train a model
 ```bash
 python src/train.py
 ```
+This trains multiple models and saves the best one under `models/geochem_pipeline.joblib`.
 
-Le script entraîne plusieurs modèles et sauvegarde le meilleur dans `models/geochem_pipeline.joblib`.
-
-### 2. Prédiction sur un nouvel échantillon
-
+### 2. Run a prediction
 ```python
 from src.infer import predict_sample
 
-# Exemple d'échantillon (36 valeurs géochimiques)
+# Example input (36 geochemical values)
 sample = [57.86, 16.46, 7.96, 0.92, 3.39, 3.29, 0.11, 0.74, 0.23, 2.77,
           5.5, 1400, 117, 1287, 0.9, 20, 4, 91, 119, 123, 10, 3, 49, 12,
           43, 68, 65, 1.76, 9, 40, 20, 110, 23, 17, 164, 4.46]
@@ -77,94 +73,92 @@ prediction = predict_sample(sample)
 print(f"Classification: {prediction}")
 ```
 
-### 3. Analyse des seuils
-
+### 3. Run threshold analysis
 ```bash
 python src/analyze_thresholds.py
 ```
 
-### 4. Analyses géochimiques spécialisées
-
+### 4. Specialized analyses
 ```bash
-# Analyse générale
+# General analysis
 python src/geochemical_analysis.py
 
-# Analyse de l'argent
+# Silver analysis
 python src/silver_analysis.py
 
-# Analyse des échantillons potentiels
+# Potential sample analysis
 python src/potential_analysis.py
 ```
 
-## 📊 Caractéristiques analysées
+## 📊 Features Analyzed
 
-Le modèle analyse **36 paramètres géochimiques** incluant :
+The model uses **36 geochemical parameters**, including:
 
-### Éléments majeurs (%)
-- SiO2, Al2O3, Fe2O3, MgO, CaO, Na2O, K2O, TiO2, P2O5, MnO
+### Major elements (%)
+SiO₂, Al₂O₃, Fe₂O₃, MgO, CaO, Na₂O, K₂O, TiO₂, P₂O₅, MnO
 
-### Éléments traces (ppm)
-- Cu, Pb, Zn, Ag, Au, As, Sb, Bi, Cd, Co, Cr, Ni, Mo, W, Sn, V, Ba, Sr, etc.
+### Trace elements (ppm)
+Cu, Pb, Zn, Ag, Au, As, Sb, Bi, Cd, Co, Cr, Ni, Mo, W, Sn, V, Ba, Sr, etc.
 
-## 🎯 Performance du modèle
+## 🎯 Model Performance
 
-Le système atteint généralement :
-- **Précision** : >85%
-- **Recall** : >80%
-- **F1-Score** : >82%
+Typical results:
+- **Accuracy**: >85%  
+- **Recall**: >80%  
+- **F1-score**: >82%  
 
-Les métriques détaillées sont disponibles dans les rapports générés après l'entraînement.
+Detailed metrics are stored in the training reports.
 
-## 📋 Format des données
+## 📋 Data Format
 
-Les échantillons doivent être fournis sous forme de liste de 36 valeurs dans l'ordre exact des caractéristiques. Le préprocessing gère automatiquement :
-- Les virgules décimales → points
-- Les valeurs de seuil (ex: "<0.1") → division par 2
-- Les valeurs manquantes → 0.0
+Samples must be provided as a **list of 36 values** in the exact expected order.  
+The preprocessing step automatically:
+- Converts decimal commas → points  
+- Handles values like `<0.1` → converted to half (0.05)  
+- Fills missing values → 0.0  
 
 ## 🔧 Configuration
 
-Le système peut être configuré via les paramètres dans les scripts :
-- **use_raw_data=True** : Utilise les données brutes avec preprocessing
-- **test_size=0.3** : Proportion de données pour le test
-- **random_state=42** : Seed pour la reproductibilité
+Configurable parameters in the scripts:
+- `use_raw_data=True` → Enables preprocessing of raw input  
+- `test_size=0.3` → Share of data reserved for testing  
+- `random_state=42` → Seed for reproducibility  
 
-## 📈 Exemples de résultats
+## 📈 Example Output
 
 ```
-TEST - Échantillon Minerai:
-Données après normalisation:
+TEST - Ore Sample:
+Normalized data:
 Min: -1.234
 Max: 2.156
 Mean: 0.045
 
-Probabilités par classe:
-  Sterile: 0.123
-  Potentiel: 0.234
-  Minerai: 0.643
+Class probabilities:
+  Sterile:   0.123
+  Potential: 0.234
+  Ore:       0.643
 
-Résultat: Minerai
+Result: Ore
 ```
 
-## 🤝 Contribution
+## 🤝 Contributing
 
-Les contributions sont les bienvenues ! Pour contribuer :
+Contributions are welcome!
 
-1. Forkez le projet
-2. Créez une branche feature (`git checkout -b feature/nouvelle-fonctionnalite`)
-3. Committez vos changements (`git commit -m 'Ajout nouvelle fonctionnalité'`)
-4. Pushez vers la branche (`git push origin feature/nouvelle-fonctionnalite`)
-5. Ouvrez une Pull Request
+1. Fork the repository  
+2. Create a feature branch (`git checkout -b feature/new-feature`)  
+3. Commit your changes (`git commit -m 'Add new feature'`)  
+4. Push your branch (`git push origin feature/new-feature`)  
+5. Open a Pull Request  
 
-## 📝 Licence
+## 📝 License
 
-Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
+This project is under the **MIT License**. See the `LICENSE` file for details.
 
 ## 📞 Contact
 
-Pour toute question ou suggestion, n'hésitez pas à ouvrir une issue sur GitHub.
+For questions or suggestions, please open an issue on GitHub.
 
 ---
 
-⭐ N'oubliez pas de donner une étoile au projet si vous l'avez trouvé utile !
-```
+⭐ If you find this project useful, don’t forget to give it a star!
